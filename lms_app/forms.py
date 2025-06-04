@@ -4,7 +4,7 @@ from .models import books
 class BookForm(forms.ModelForm):
     class Meta:
         model = books
-        exclude = ['status', 'active'] 
+        exclude = [ 'active'] 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),
             'author': forms.TextInput(attrs={'class': 'form-control'}),

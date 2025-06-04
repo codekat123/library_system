@@ -49,14 +49,17 @@
       $('#myInput').trigger('focus')
     });
 /*here i will make loop for get id category and status for contact with books */
-/*حساب اجمالي الارباح و هي عبارة عن حاصل جمع سعر الكتب عند البيع بالاضافة الى سعر استعارة الكتاب*/
   });
+{% for book in books %} 
+$(".one{{book.category.id}}").click(function(){
+$(".bookhide").hide()
+$(".book{{book.category.id}}").show()
+});
+{% endfor %}
 </script>
 <script>
  
-  
-
-
+ 
 $(function () {
   'use strict'
  
@@ -156,7 +159,7 @@ $(function () {
     type: 'pie',
     data: {
       datasets: [{
-        data: ['35','25','40'],
+        data: ['{{available}}','{{sold}}','{{rental}}'],
         backgroundColor :["#27c100","#f3545d","#fdaf4b"],
         borderWidth: 10,
         

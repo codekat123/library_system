@@ -21,7 +21,7 @@
                 <div class="card-body">
                   <div class="d-flex">
                     <p class="d-flex flex-column">
-                      <span class="text-bold text-lg">500</span>
+                      <span class="text-bold text-lg">{{number_of_book}}</span>
                       <span>اجمالي عدد الكتب</span>
                     </p>  
                   </div>
@@ -101,23 +101,16 @@
   
   
           <!-- تصنيفات-->
-  
+          
           <div class="row justify-content-center mb-3">
             <div class="col-4 ">
               <ul class="nav">
-            
-                <li class="nav-item ">
-                  <a id="" class="nav-link bg-primary" href="#">تاريخ</a>
+              {% for one in category %}
+                <li class="nav-item one{{one.id}} ">
+                  <a id="" class="nav-link bg-primary" href="#">{{one.type}}</a>
                 </li>
-                <li class="nav-item ">
-                  <a id="" class="nav-link bg-primary" href="#">فن</a>
-                </li>
-                <li class="nav-item ">
-                  <a id="" class="nav-link bg-primary" href="#">ثقافة</a>
-                </li>
-                <li class="nav-item ">
-                  <a id="" class="nav-link bg-primary" href="#">رومانسية</a>
-                </li>
+                {% endfor %}
+                
               </ul>
             </div>
           </div>
@@ -127,7 +120,7 @@
 
           <!-- الكتب -->
            {% for book in books %}
-              <div id="" class="col-md-4">
+              <div id="" class="col-md-4 bookhide book{{book.category.id}}">
                   <!-- Widget: user widget style 1 -->
                 <div id="" class="card card-widget widget-user ">
                   <!-- Add the bg color to the header using any of the bg-* classes -->
@@ -147,7 +140,7 @@
                   <h3 class="widget-user-username">{{ book.title }}</h3>
                   <h5 class="widget-user-desc">{{ book.author }}</h5>
                 </div>
-                {% if book.author_photo.url %}
+                {% if author_photo.url %}
                 <div class="widget-user-image">
                   <img style="width:100px; height: 100px;" class="img-circle elevation-2" src="{{ book.author_photo.url }}" alt="User Avatar">
                 </div>

@@ -9,7 +9,14 @@ def index(request):
                        if add_book.is_valid() :
                                add_book.save()
                context = { 'form': BookForm(),
-                       'books':books.objects.all()}
+                       'books':books.objects.all(),
+                        'category':category.objects.all(),
+                        'number_of_book':books.objects.filter(active =True ).count(),
+                        'available':books.objects.filter(status = 'available' ).count(),
+                        'sold':books.objects.filter(status = 'sold' ).count(),
+                        'rental':books.objects.filter(status = 'rental' ).count(),
+
+                        }
                return render(request, 'pages/index.html',context)
 
 def update(request,id):
@@ -29,5 +36,5 @@ def delete(request,id):
         delete_book = get_object_or_404(books,id=id)
         if request.method == 'POST':
                 delete_book.delete()
-                redirect('/')
+                return redirect('/')
         return render(request,'pages/delete.html')
