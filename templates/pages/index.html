@@ -140,7 +140,7 @@
                   <h3 class="widget-user-username">{{ book.title }}</h3>
                   <h5 class="widget-user-desc">{{ book.author }}</h5>
                 </div>
-                {% if author_photo.url %}
+                {% if book.author_photo.url %}
                 <div class="widget-user-image">
                   <img style="width:100px; height: 100px;" class="img-circle elevation-2" src="{{ book.author_photo.url }}" alt="User Avatar">
                 </div>
