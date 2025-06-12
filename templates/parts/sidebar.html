@@ -20,10 +20,10 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="{% url 'books' %}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                New Books
+                Books
               </p>
             </a>
           </li>
@@ -46,7 +46,7 @@
                   </li> 
               <form id="cat" method="POST">
              
-                  <input type="text" class="form-control">
+                  {{category}}
 
                   <button type="submit" class="btn btn-success">save</button>
                   <button id="backcat" class="btn btn-primary ">back</button>

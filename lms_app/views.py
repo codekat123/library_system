@@ -1,26 +1,35 @@
 from django.shortcuts import render,redirect, get_object_or_404
 from .models import *
-from .forms import BookForm
+from .forms import *
 def book(request):
-               return render(request, 'pages/books.html')
+               context = {
+                       'data':Books.objects.all(),
+                       'category':category.objects.all()
+               }
+               return render(request, 'pages/books.html',context)
 def index(request):
                if request.method == 'POST':
                        add_book = BookForm(request.POST,request.FILES)
+                       add_category = CategoryForms(request.POST,request.FILES)
+                       if add_category.is_valid():
+                               add_category.save()
                        if add_book.is_valid() :
                                add_book.save()
                context = { 'form': BookForm(),
-                       'books':books.objects.all(),
+                          'category':CategoryForms(),
+                       'books':Books.objects.all(),
                         'category':category.objects.all(),
-                        'number_of_book':books.objects.filter(active =True ).count(),
-                        'available':books.objects.filter(status = 'available' ).count(),
-                        'sold':books.objects.filter(status = 'sold' ).count(),
-                        'rental':books.objects.filter(status = 'rental' ).count(),
+                        'number_of_book':Books.objects.filter(active =True ).count(),
+                        'available':Books.objects.filter(status = 'available' ).count(),
+                        'sold':Books.objects.filter(status = 'sold' ).count(),
+                        'rental':Books.objects.filter(status = 'rental' ).count(),
 
                         }
                return render(request, 'pages/index.html',context)
 
 def update(request,id):
-        book_id = books.objects.get(id=id)
+        book_id = Books.objects.get(id=id)
+        print(book_id.category)
         if request.method == 'POST':
                 book_save = BookForm(request.POST,request.FILES,instance=book_id)
                 if book_save.is_valid():
@@ -33,7 +42,7 @@ def update(request,id):
                 }
         return render(request,'pages/update.html',context)
 def delete(request,id):
-        delete_book = get_object_or_404(books,id=id)
+        delete_book = get_object_or_404(Books,id=id)
         if request.method == 'POST':
                 delete_book.delete()
                 return redirect('/')

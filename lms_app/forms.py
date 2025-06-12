@@ -1,9 +1,17 @@
 from django import forms
-from .models import books
+from .models import *
+
+class CategoryForms(forms.ModelForm):
+    class Meta:
+        model = category
+        fields = ['type']
+        widgets ={
+            'type':forms.TextInput(attrs={'class':'from-control'})
+        }
 
 class BookForm(forms.ModelForm):
     class Meta:
-        model = books
+        model = Books
         exclude = [ 'active'] 
         widgets = {
             'title': forms.TextInput(attrs={'class': 'form-control'}),

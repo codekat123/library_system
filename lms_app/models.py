@@ -3,7 +3,7 @@ class category(models.Model):
       type = models.CharField(max_length=50)
       def __str__(self):
             return self.type
-class books(models.Model):
+class Books(models.Model):
       status_book = [
             ('available','available'),
             ('rental','rental'),
