@@ -50,13 +50,27 @@
     });
 /*here i will make loop for get id category and status for contact with books */
   });
-{% for book in books %} 
+{% for book in books %}
 $(".one{{book.category.id}}").click(function(){
 $(".bookhide").hide()
 $(".book{{book.category.id}}").show()
 });
 {% endfor %}
+$(document).ready(function(){
+  var total = 0;
+
+  $('.totalprice').each(function(){
+    var salary = $(this).text();
+    $(this).hide(); 
+    total += parseInt(salary) || 0; 
+  });
+
+  $("#totalsalarys").text(total);
+});
+
 </script>
+
+
 <script>
  
  
@@ -192,6 +206,17 @@ $(function () {
 
 
  
+</script>
+
+<script>
+$('#catinput').hide()
+$('#addcat').click(function(){
+  $('#catinput').show()
+});
+$('#backcat').click(function(){
+  $('#catinput').hide()
+});
+
 </script>
 
 </body>

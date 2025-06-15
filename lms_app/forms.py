@@ -6,7 +6,7 @@ class CategoryForms(forms.ModelForm):
         model = category
         fields = ['type']
         widgets ={
-            'type':forms.TextInput(attrs={'class':'from-control'})
+            'type':forms.TextInput(attrs={'class':'form-control'})
         }
 
 class BookForm(forms.ModelForm):
