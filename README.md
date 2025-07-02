@@ -64,7 +64,3 @@ A simple and modern web application for managing a library's collection of books
 
 ## License
 This project is open source and available under the MIT License.
-
----
-
-Feel free to customize this project to fit your needs. Contributions and feedback are always welcome! 
