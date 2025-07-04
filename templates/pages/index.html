@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% block content %}
+{% load crispy_forms_tags %}
 <div style="direction: rtl;" class="wrapper">
   
     <!-- Content Wrapper. Contains page content -->
@@ -95,7 +96,7 @@
             <!-- form start -->
             <form method="POST" enctype="multipart/form-data"  > 
               <div class="card-body"> 
-                {{form}}
+                {{form | crispy}}
                 {% csrf_token %}
               </div>
               <!-- /.card-body -->
@@ -146,7 +147,7 @@
                   </div>
                 </div>
 
-                <div class="widget-user-header bg-info">
+                <div class="widget-user-header bg-info"style="background: url({{book.book_photo.url}}) no-repeat center center; background-size: cover;">
                   <h3 class="widget-user-username">{{ book.title }}</h3>
                   <h5 class="widget-user-desc">{{ book.author }}</h5>
                 </div>
