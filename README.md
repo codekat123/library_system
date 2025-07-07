@@ -17,7 +17,7 @@ A simple and modern web application for managing a library's collection of books
 ### Prerequisites
 - Python 3.8+
 - Django 5.x
-- (Optional) Virtual environment tool like `venv` or `virtualenv`
+- Virtual environment tool like `venv` or `virtualenv`
 
 ### Installation
 1. **Clone the repository:**
